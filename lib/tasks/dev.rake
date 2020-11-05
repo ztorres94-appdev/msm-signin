@@ -1504,90 +1504,94 @@ character_values = [
 Character.insert_all!(character_values)
 puts "There are #{Character.count} characters in the database"
 
-User.delete_all
+if Object.const_defined?("User")
+  User.delete_all
 
-users = [
-  {id: 81, email: "galen@example.com", first_name: "galen", last_name: "Example", created_at: "2015-01-19 09:24:34", updated_at: "2019-10-08 10:25:00"},
-  {id: 82, email: "trina@example.com", first_name: "trina", last_name: "Example", created_at: "2014-09-02 06:05:56", updated_at: "2019-10-08 10:25:00"},
-  {id: 83, email: "tyree@example.com", first_name: "tyree", last_name: "Example", created_at: "2017-06-23 22:31:32", updated_at: "2019-10-08 10:25:00"},
-  {id: 84, email: "sharilyn@example.com", first_name: "sharilyn", last_name: "Example", created_at: "2014-09-23 01:03:23", updated_at: "2019-10-08 10:25:00"},
-  {id: 85, email: "judith@example.com", first_name: "judith", last_name: "Example", created_at: "2014-08-02 12:55:21", updated_at: "2019-10-08 10:25:00"},
-  {id: 86, email: "roscoe@example.com", first_name: "roscoe", last_name: "Example", created_at: "2018-03-05 07:37:08", updated_at: "2019-10-08 10:25:00"},
-  {id: 87, email: "thad@example.com", first_name: "thad", last_name: "Example", created_at: "2015-05-29 04:13:06", updated_at: "2019-10-08 10:25:00"},
-  {id: 88, email: "vanetta@example.com", first_name: "vanetta", last_name: "Example", created_at: "2017-11-07 09:36:41", updated_at: "2019-10-08 10:25:00"},
-  {id: 89, email: "jackie@example.com", first_name: "jackie", last_name: "Example", created_at: "2016-10-28 00:47:57", updated_at: "2019-10-08 10:25:00"},
-  {id: 90, email: "lucius@example.com", first_name: "lucius", last_name: "Example", created_at: "2014-06-15 07:42:16", updated_at: "2019-10-08 10:25:00"},
-  {id: 91, email: "phylicia@example.com", first_name: "phylicia", last_name: "Example", created_at: "2016-11-11 04:22:51", updated_at: "2019-10-08 10:25:00"},
-  {id: 92, email: "trey@example.com", first_name: "trey", last_name: "Example", created_at: "2015-03-19 22:51:10", updated_at: "2019-10-08 10:25:00"},
-  {id: 93, email: "wilford@example.com", first_name: "wilford", last_name: "Example", created_at: "2018-07-03 04:50:16", updated_at: "2019-10-08 10:25:00"},
-  {id: 94, email: "tristan@example.com", first_name: "tristan", last_name: "Example", created_at: "2016-04-11 04:31:49", updated_at: "2019-10-08 10:25:00"},
-  {id: 95, email: "leilani@example.com", first_name: "leilani", last_name: "Example", created_at: "2016-07-07 15:54:04", updated_at: "2019-10-08 10:25:00"},
-  {id: 96, email: "jolie@example.com", first_name: "jolie", last_name: "Example", created_at: "2018-12-19 04:59:05", updated_at: "2019-10-08 10:25:00"},
-  {id: 97, email: "roselee@example.com", first_name: "roselee", last_name: "Example", created_at: "2018-09-23 23:09:31", updated_at: "2019-10-08 10:25:00"},
-  {id: 98, email: "catherina@example.com", first_name: "catherina", last_name: "Example", created_at: "2019-01-10 14:30:55", updated_at: "2019-10-08 10:25:00"},
-  {id: 99, email: "jackson@example.com", first_name: "jackson", last_name: "Example", created_at: "2018-08-18 12:42:06", updated_at: "2019-10-08 10:25:00"},
-  {id: 100, email: "kina@example.com", first_name: "kina", last_name: "Example", created_at: "2018-05-05 13:27:22", updated_at: "2019-10-08 10:25:00"},
-  {id: 101, email: "drew@example.com", first_name: "drew", last_name: "Example", created_at: "2015-03-06 21:22:35", updated_at: "2019-10-08 10:25:00"},
-  {id: 102, email: "austin@example.com", first_name: "austin", last_name: "Example", created_at: "2014-07-27 22:35:21", updated_at: "2019-10-08 10:25:00"},
-  {id: 103, email: "lea@example.com", first_name: "lea", last_name: "Example", created_at: "2016-01-27 07:56:16", updated_at: "2019-10-08 10:25:00"},
-  {id: 104, email: "ester@example.com", first_name: "ester", last_name: "Example", created_at: "2016-09-23 04:05:25", updated_at: "2019-10-08 10:25:00"},
-  {id: 105, email: "robin@example.com", first_name: "robin", last_name: "Example", created_at: "2017-02-27 23:11:30", updated_at: "2019-10-08 10:25:00"},
-  {id: 106, email: "debbi@example.com", first_name: "debbi", last_name: "Example", created_at: "2017-01-08 22:09:33", updated_at: "2019-10-08 10:25:00"},
-  {id: 107, email: "rosaria@example.com", first_name: "rosaria", last_name: "Example", created_at: "2016-01-20 03:28:52", updated_at: "2019-10-08 10:25:00"},
-  {id: 108, email: "maida@example.com", first_name: "maida", last_name: "Example", created_at: "2018-12-30 20:20:47", updated_at: "2019-10-08 10:25:00"},
-  {id: 109, email: "augustine@example.com", first_name: "augustine", last_name: "Example", created_at: "2015-12-21 09:36:27", updated_at: "2019-10-08 10:25:00"}
-]
-User.insert_all!(users)
-if User.method_defined?(:password) || User.has_attribute?(:password_digest)
-  User.find_each do |user|
-    user.password = "password"
-    user.save
+  users = [
+    {id: 81, email: "galen@example.com", first_name: "galen", last_name: "Example", created_at: "2015-01-19 09:24:34", updated_at: "2019-10-08 10:25:00"},
+    {id: 82, email: "trina@example.com", first_name: "trina", last_name: "Example", created_at: "2014-09-02 06:05:56", updated_at: "2019-10-08 10:25:00"},
+    {id: 83, email: "tyree@example.com", first_name: "tyree", last_name: "Example", created_at: "2017-06-23 22:31:32", updated_at: "2019-10-08 10:25:00"},
+    {id: 84, email: "sharilyn@example.com", first_name: "sharilyn", last_name: "Example", created_at: "2014-09-23 01:03:23", updated_at: "2019-10-08 10:25:00"},
+    {id: 85, email: "judith@example.com", first_name: "judith", last_name: "Example", created_at: "2014-08-02 12:55:21", updated_at: "2019-10-08 10:25:00"},
+    {id: 86, email: "roscoe@example.com", first_name: "roscoe", last_name: "Example", created_at: "2018-03-05 07:37:08", updated_at: "2019-10-08 10:25:00"},
+    {id: 87, email: "thad@example.com", first_name: "thad", last_name: "Example", created_at: "2015-05-29 04:13:06", updated_at: "2019-10-08 10:25:00"},
+    {id: 88, email: "vanetta@example.com", first_name: "vanetta", last_name: "Example", created_at: "2017-11-07 09:36:41", updated_at: "2019-10-08 10:25:00"},
+    {id: 89, email: "jackie@example.com", first_name: "jackie", last_name: "Example", created_at: "2016-10-28 00:47:57", updated_at: "2019-10-08 10:25:00"},
+    {id: 90, email: "lucius@example.com", first_name: "lucius", last_name: "Example", created_at: "2014-06-15 07:42:16", updated_at: "2019-10-08 10:25:00"},
+    {id: 91, email: "phylicia@example.com", first_name: "phylicia", last_name: "Example", created_at: "2016-11-11 04:22:51", updated_at: "2019-10-08 10:25:00"},
+    {id: 92, email: "trey@example.com", first_name: "trey", last_name: "Example", created_at: "2015-03-19 22:51:10", updated_at: "2019-10-08 10:25:00"},
+    {id: 93, email: "wilford@example.com", first_name: "wilford", last_name: "Example", created_at: "2018-07-03 04:50:16", updated_at: "2019-10-08 10:25:00"},
+    {id: 94, email: "tristan@example.com", first_name: "tristan", last_name: "Example", created_at: "2016-04-11 04:31:49", updated_at: "2019-10-08 10:25:00"},
+    {id: 95, email: "leilani@example.com", first_name: "leilani", last_name: "Example", created_at: "2016-07-07 15:54:04", updated_at: "2019-10-08 10:25:00"},
+    {id: 96, email: "jolie@example.com", first_name: "jolie", last_name: "Example", created_at: "2018-12-19 04:59:05", updated_at: "2019-10-08 10:25:00"},
+    {id: 97, email: "roselee@example.com", first_name: "roselee", last_name: "Example", created_at: "2018-09-23 23:09:31", updated_at: "2019-10-08 10:25:00"},
+    {id: 98, email: "catherina@example.com", first_name: "catherina", last_name: "Example", created_at: "2019-01-10 14:30:55", updated_at: "2019-10-08 10:25:00"},
+    {id: 99, email: "jackson@example.com", first_name: "jackson", last_name: "Example", created_at: "2018-08-18 12:42:06", updated_at: "2019-10-08 10:25:00"},
+    {id: 100, email: "kina@example.com", first_name: "kina", last_name: "Example", created_at: "2018-05-05 13:27:22", updated_at: "2019-10-08 10:25:00"},
+    {id: 101, email: "drew@example.com", first_name: "drew", last_name: "Example", created_at: "2015-03-06 21:22:35", updated_at: "2019-10-08 10:25:00"},
+    {id: 102, email: "austin@example.com", first_name: "austin", last_name: "Example", created_at: "2014-07-27 22:35:21", updated_at: "2019-10-08 10:25:00"},
+    {id: 103, email: "lea@example.com", first_name: "lea", last_name: "Example", created_at: "2016-01-27 07:56:16", updated_at: "2019-10-08 10:25:00"},
+    {id: 104, email: "ester@example.com", first_name: "ester", last_name: "Example", created_at: "2016-09-23 04:05:25", updated_at: "2019-10-08 10:25:00"},
+    {id: 105, email: "robin@example.com", first_name: "robin", last_name: "Example", created_at: "2017-02-27 23:11:30", updated_at: "2019-10-08 10:25:00"},
+    {id: 106, email: "debbi@example.com", first_name: "debbi", last_name: "Example", created_at: "2017-01-08 22:09:33", updated_at: "2019-10-08 10:25:00"},
+    {id: 107, email: "rosaria@example.com", first_name: "rosaria", last_name: "Example", created_at: "2016-01-20 03:28:52", updated_at: "2019-10-08 10:25:00"},
+    {id: 108, email: "maida@example.com", first_name: "maida", last_name: "Example", created_at: "2018-12-30 20:20:47", updated_at: "2019-10-08 10:25:00"},
+    {id: 109, email: "augustine@example.com", first_name: "augustine", last_name: "Example", created_at: "2015-12-21 09:36:27", updated_at: "2019-10-08 10:25:00"}
+  ]
+  User.insert_all!(users)
+  if User.method_defined?(:password) || User.has_attribute?(:password_digest)
+    User.find_each do |user|
+      user.password = "password"
+      user.save
+    end
+    puts "Found a password column. Added passwords."
+  else
+    # puts "No password column found. Didn't add passwords."
   end
-  puts "Found a password column. Added passwords."
-else
-  # puts "No password column found. Didn't add passwords."
-end
-puts "There are #{User.count} users in the database"
-Bookmark.delete_all
+  puts "There are #{User.count} users in the database"
+  Bookmark.delete_all
 
-bookmarks = [
-  { id: 200, user_id: 81, movie_id: 12, created_at: "2017-11-24 23:32:54", updated_at: "2017-11-24 23:32:54"},
-  { id: 201, user_id: 82, movie_id: 4, created_at: "2017-11-24 23:32:54", updated_at: "2017-11-24 23:32:54"},
-  { id: 202, user_id: 83, movie_id: 1, created_at: "2017-11-24 23:32:54", updated_at: "2017-11-24 23:32:54"},
-  { id: 203, user_id: 84, movie_id: 3, created_at: "2017-11-24 23:32:54", updated_at: "2017-11-24 23:32:54"},
-  { id: 204, user_id: 85, movie_id: 9, created_at: "2017-11-24 23:32:54", updated_at: "2017-11-24 23:32:54"},
-  { id: 205, user_id: 86, movie_id: 7, created_at: "2017-11-24 23:32:54", updated_at: "2017-11-24 23:32:54"},
-  { id: 206, user_id: 87, movie_id: 11, created_at: "2017-11-24 23:32:54", updated_at: "2017-11-24 23:32:54"},
-  { id: 207, user_id: 88, movie_id: 15, created_at: "2017-11-24 23:32:54", updated_at: "2017-11-24 23:32:54"},
-  { id: 208, user_id: 89, movie_id: 19, created_at: "2017-11-24 23:32:54", updated_at: "2017-11-24 23:32:54"},
-  { id: 209, user_id: 90, movie_id: 8, created_at: "2017-11-24 23:32:54", updated_at: "2017-11-24 23:32:54"},
-  { id: 210, user_id: 91, movie_id: 20, created_at: "2017-11-24 23:32:54", updated_at: "2017-11-24 23:32:54"},
-  { id: 211, user_id: 92, movie_id: 23, created_at: "2017-11-24 23:32:54", updated_at: "2017-11-24 23:32:54"},
-  { id: 212, user_id: 93, movie_id: 28, created_at: "2017-11-24 23:32:54", updated_at: "2017-11-24 23:32:54"},
-  { id: 213, user_id: 94, movie_id: 24, created_at: "2017-11-24 23:32:54", updated_at: "2017-11-24 23:32:54"},
-  { id: 214, user_id: 95, movie_id: 26, created_at: "2017-11-24 23:32:54", updated_at: "2017-11-24 23:32:54"},
-  { id: 215, user_id: 96, movie_id: 18, created_at: "2017-11-24 23:32:54", updated_at: "2017-11-24 23:32:54"},
-  { id: 216, user_id: 97, movie_id: 22, created_at: "2017-11-24 23:32:54", updated_at: "2017-11-24 23:32:54"},
-  { id: 217, user_id: 98, movie_id: 28, created_at: "2017-11-24 23:32:54", updated_at: "2017-11-24 23:32:54"},
-  { id: 218, user_id: 99, movie_id: 30, created_at: "2017-11-24 23:32:54", updated_at: "2017-11-24 23:32:54"},
-  { id: 219, user_id: 100, movie_id: 33, created_at: "2017-11-24 23:32:54", updated_at: "2017-11-24 23:32:54"},
-  { id: 220, user_id: 101, movie_id: 33, created_at: "2017-11-24 23:32:54", updated_at: "2017-11-24 23:32:54"},
-  { id: 221, user_id: 102, movie_id: 35, created_at: "2017-11-24 23:32:54", updated_at: "2017-11-24 23:32:54"},
-  { id: 222, user_id: 103, movie_id: 38, created_at: "2017-11-24 23:32:54", updated_at: "2017-11-24 23:32:54"},
-  { id: 223, user_id: 104, movie_id: 36, created_at: "2017-11-24 23:32:54", updated_at: "2017-11-24 23:32:54"},
-  { id: 224, user_id: 105, movie_id: 44, created_at: "2017-11-24 23:32:54", updated_at: "2017-11-24 23:32:54"},
-  { id: 225, user_id: 106, movie_id: 41, created_at: "2017-11-24 23:32:54", updated_at: "2017-11-24 23:32:54"},
-  { id: 226, user_id: 107, movie_id: 29, created_at: "2017-11-24 23:32:54", updated_at: "2017-11-24 23:32:54"},
-  { id: 227, user_id: 108, movie_id: 10, created_at: "2017-11-24 23:32:54", updated_at: "2017-11-24 23:32:54"},
-  { id: 228, user_id: 109, movie_id: 20, created_at: "2017-11-24 23:32:54", updated_at: "2017-11-24 23:32:54"},
-  { id: 229, user_id: 109, movie_id: 50, created_at: "2017-11-24 23:32:54", updated_at: "2017-11-24 23:32:54"},
-  { id: 230, user_id: 109, movie_id: 52, created_at: "2017-11-24 23:32:54", updated_at: "2017-11-24 23:32:54"},
-  { id: 231, user_id: 81, movie_id: 46, created_at: "2017-11-24 23:32:54", updated_at: "2017-11-24 23:32:54"},
-  { id: 232, user_id: 81, movie_id: 39, created_at: "2017-11-24 23:32:54", updated_at: "2017-11-24 23:32:54"},
-  { id: 233, user_id: 86, movie_id: 40, created_at: "2017-11-24 23:32:54", updated_at: "2017-11-24 23:32:54"},
-  { id: 234, user_id: 86, movie_id: 30, created_at: "2017-11-24 23:32:54", updated_at: "2017-11-24 23:32:54"},
-  { id: 235, user_id: 90, movie_id: 1, created_at: "2017-11-24 23:32:54", updated_at: "2017-11-24 23:32:54"},
-  { id: 236, user_id: 90, movie_id: 27, created_at: "2017-11-24 23:32:54", updated_at: "2017-11-24 23:32:54"}
-]
-Bookmark.insert_all!(bookmarks)
+  bookmarks = [
+    { id: 200, user_id: 81, movie_id: 12, created_at: "2017-11-24 23:32:54", updated_at: "2017-11-24 23:32:54"},
+    { id: 201, user_id: 82, movie_id: 4, created_at: "2017-11-24 23:32:54", updated_at: "2017-11-24 23:32:54"},
+    { id: 202, user_id: 83, movie_id: 1, created_at: "2017-11-24 23:32:54", updated_at: "2017-11-24 23:32:54"},
+    { id: 203, user_id: 84, movie_id: 3, created_at: "2017-11-24 23:32:54", updated_at: "2017-11-24 23:32:54"},
+    { id: 204, user_id: 85, movie_id: 9, created_at: "2017-11-24 23:32:54", updated_at: "2017-11-24 23:32:54"},
+    { id: 205, user_id: 86, movie_id: 7, created_at: "2017-11-24 23:32:54", updated_at: "2017-11-24 23:32:54"},
+    { id: 206, user_id: 87, movie_id: 11, created_at: "2017-11-24 23:32:54", updated_at: "2017-11-24 23:32:54"},
+    { id: 207, user_id: 88, movie_id: 15, created_at: "2017-11-24 23:32:54", updated_at: "2017-11-24 23:32:54"},
+    { id: 208, user_id: 89, movie_id: 19, created_at: "2017-11-24 23:32:54", updated_at: "2017-11-24 23:32:54"},
+    { id: 209, user_id: 90, movie_id: 8, created_at: "2017-11-24 23:32:54", updated_at: "2017-11-24 23:32:54"},
+    { id: 210, user_id: 91, movie_id: 20, created_at: "2017-11-24 23:32:54", updated_at: "2017-11-24 23:32:54"},
+    { id: 211, user_id: 92, movie_id: 23, created_at: "2017-11-24 23:32:54", updated_at: "2017-11-24 23:32:54"},
+    { id: 212, user_id: 93, movie_id: 28, created_at: "2017-11-24 23:32:54", updated_at: "2017-11-24 23:32:54"},
+    { id: 213, user_id: 94, movie_id: 24, created_at: "2017-11-24 23:32:54", updated_at: "2017-11-24 23:32:54"},
+    { id: 214, user_id: 95, movie_id: 26, created_at: "2017-11-24 23:32:54", updated_at: "2017-11-24 23:32:54"},
+    { id: 215, user_id: 96, movie_id: 18, created_at: "2017-11-24 23:32:54", updated_at: "2017-11-24 23:32:54"},
+    { id: 216, user_id: 97, movie_id: 22, created_at: "2017-11-24 23:32:54", updated_at: "2017-11-24 23:32:54"},
+    { id: 217, user_id: 98, movie_id: 28, created_at: "2017-11-24 23:32:54", updated_at: "2017-11-24 23:32:54"},
+    { id: 218, user_id: 99, movie_id: 30, created_at: "2017-11-24 23:32:54", updated_at: "2017-11-24 23:32:54"},
+    { id: 219, user_id: 100, movie_id: 33, created_at: "2017-11-24 23:32:54", updated_at: "2017-11-24 23:32:54"},
+    { id: 220, user_id: 101, movie_id: 33, created_at: "2017-11-24 23:32:54", updated_at: "2017-11-24 23:32:54"},
+    { id: 221, user_id: 102, movie_id: 35, created_at: "2017-11-24 23:32:54", updated_at: "2017-11-24 23:32:54"},
+    { id: 222, user_id: 103, movie_id: 38, created_at: "2017-11-24 23:32:54", updated_at: "2017-11-24 23:32:54"},
+    { id: 223, user_id: 104, movie_id: 36, created_at: "2017-11-24 23:32:54", updated_at: "2017-11-24 23:32:54"},
+    { id: 224, user_id: 105, movie_id: 44, created_at: "2017-11-24 23:32:54", updated_at: "2017-11-24 23:32:54"},
+    { id: 225, user_id: 106, movie_id: 41, created_at: "2017-11-24 23:32:54", updated_at: "2017-11-24 23:32:54"},
+    { id: 226, user_id: 107, movie_id: 29, created_at: "2017-11-24 23:32:54", updated_at: "2017-11-24 23:32:54"},
+    { id: 227, user_id: 108, movie_id: 10, created_at: "2017-11-24 23:32:54", updated_at: "2017-11-24 23:32:54"},
+    { id: 228, user_id: 109, movie_id: 20, created_at: "2017-11-24 23:32:54", updated_at: "2017-11-24 23:32:54"},
+    { id: 229, user_id: 109, movie_id: 50, created_at: "2017-11-24 23:32:54", updated_at: "2017-11-24 23:32:54"},
+    { id: 230, user_id: 109, movie_id: 52, created_at: "2017-11-24 23:32:54", updated_at: "2017-11-24 23:32:54"},
+    { id: 231, user_id: 81, movie_id: 46, created_at: "2017-11-24 23:32:54", updated_at: "2017-11-24 23:32:54"},
+    { id: 232, user_id: 81, movie_id: 39, created_at: "2017-11-24 23:32:54", updated_at: "2017-11-24 23:32:54"},
+    { id: 233, user_id: 86, movie_id: 40, created_at: "2017-11-24 23:32:54", updated_at: "2017-11-24 23:32:54"},
+    { id: 234, user_id: 86, movie_id: 30, created_at: "2017-11-24 23:32:54", updated_at: "2017-11-24 23:32:54"},
+    { id: 235, user_id: 90, movie_id: 1, created_at: "2017-11-24 23:32:54", updated_at: "2017-11-24 23:32:54"},
+    { id: 236, user_id: 90, movie_id: 27, created_at: "2017-11-24 23:32:54", updated_at: "2017-11-24 23:32:54"}
+  ]
+  Bookmark.insert_all!(bookmarks)
+  else
+    puts "No User class detected. Ignoring User and Bookmark records"
+  end
 end
