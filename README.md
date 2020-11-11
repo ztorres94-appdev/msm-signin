@@ -65,8 +65,6 @@ Target: https://msm-signin.matchthetarget.com/
 
 <li>/bookmarks has a form to create bookmarks </li>
 
-<li>/bookmarks has a form to create bookmarks </li>
-
 <li>/bookmarks has a dropdown to select Movies by title </li>
 
 <li>/bookmarks form creates a bookmark record </li>
@@ -76,5 +74,13 @@ Target: https://msm-signin.matchthetarget.com/
 <li>/bookmarks has a link to delete each bookmark </li>
 
 <li>/bookmarks has a link, 'Un-bookmark', that removes a Bookmark record </li>
+
+<li>/movies/[MOVIE ID] does NOT have a button, 'Bookmark this movie', to create a bookmark record when user is signed out </li>
+
+<li>/movies/[MOVIE ID] has a form to create a bookmark record when user is signed in </li>
+
+<li>/movies/[MOVIE ID] has a link 'Un-bookmark' to delete bookmark if signed-in user has bookmarked the movie </li>
+
+<li>/movies/[MOVIE ID] has a link, 'Un-bookmark', that removes a Bookmark record, if the signed-in user has bookmarked the movie </li>
 
 </details>
