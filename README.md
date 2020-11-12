@@ -28,7 +28,7 @@ rails generate draft:resource movie title:string year:integer duration:integer d
 ```
 
 ```
-rails generate draft:resource movie title:string year:integer duration:integer director_id:integer description:text image:string
+rails generate draft:resource character name:string actor_id:integer movie_id:integer
 ```
 
 If you re-create these tables/columns _exactly_, then you can use the included `rails sample_data` task. Other than that script, this is a blank Rails app.
