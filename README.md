@@ -1,15 +1,68 @@
 # MSM Signin
 
-Target: https://msm-signin.matchthetarget.com/
+Target: [https://msm-signin.matchthetarget.com/](https://msm-signin.matchthetarget.com/)
 
-## Setup
+## Standard setup
 
 1. Start the web server by running `bin/server`.
 1. Navigate to your live application preview.
 1. As you work, remember to navigate to `/git` and **commit often as you work.**
-1. `rails grade` to ensure everything still works.
+1. Match [the target](https://msm-signin.matchthetarget.com/).
+1. Read the specs at the bottom of this README to confirm you got everything we're testing for.
+1. `rails grade` to make sure and submit.
+
+## Initial data model
+
+Here is how to recreate the exact same data model that we had in previous MSM projects; except this time using the `draft:resource` generator (instead of the `model` generator) to add the tables _and_ RCAVs for a basic CRUD web interface:
+
+```
+rails generate draft:resource actor name:string dob:date bio:text image:string
+```
+
+```
+rails generate draft:resource director name:string dob:date bio:text image:string
+```
+
+```
+rails generate draft:resource movie title:string year:integer duration:integer director_id:integer description:text image:string
+```
+
+```
+rails generate draft:resource movie title:string year:integer duration:integer director_id:integer description:text image:string
+```
+
+If you re-create these tables/columns _exactly_, then you can use the included `rails sample_data` task. Other than that script, this is a blank Rails app.
+
+## Add users
+
+To add a `users` tables and RCAVs to allow people to sign-up/sign-in as records in this table:
+
+```
+rails generate draft:account user first_name:string last_name:string
+```
+
+(`email` and `password_digest` will be added automatically by the `draft:account` generator.)
+
+## Add bookmarks
+
+Let's add a join table to connect users and movies. "Bookmarks" sounds good. Since this is a regular old CRUD resource, not accounts, use the `draft:resource` generator again for the appropriate RCAVs:
+
+```
+rails generate draft:resource bookmark user_id:integer movie_id:integer
+```
+
+## Improve the interface
+
+Now that we've generated our resources, modify/add RCAVs to make the interface match [our vision](https://msm-signin.matchthetarget.com/).
+
+In particular,
+
+ - `/bookmarks` should present a nice dropdown for users to add movies to their to-do list.
+ - There should be a way to bookmark/un-bookmark a movie right on its details page.
+
 
 ## Specs
+
 <details>
   <summary>Click here to see names of each test</summary>
 
