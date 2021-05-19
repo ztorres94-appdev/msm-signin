@@ -1,4 +1,4 @@
-image: jelaniwoods/appdev2021-msm-signin
+image: jelaniwoods/appdev2021-msm-signin@sha256:3b3ea0260ba775a0ef0d9833e169b71d80daa6a6afdfe4e0f29b578287ba92a0
 
 tasks:
   - init: bin/setup
