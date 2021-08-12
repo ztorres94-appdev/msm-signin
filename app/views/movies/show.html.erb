@@ -11,12 +11,35 @@
         </a>
       </div>
 
+
       <div>
         <a href="/delete_movie/<%= @the_movie.id %>">
           Delete movie
         </a>
       </div>
     </div>
+<hr>
+<% if session.fetch( :user_id) == nil  %>
+ <% #blank %>
+
+ <% else %>
+    <%if @the_bookmark == nil %>
+      <div>
+        <form action="/insert_bookmark" method="post">
+        <input type="hidden" value="<%= @the_movie.id %>" id="movie_id_box" name="query_movie_id" class="form-control">
+
+        <button class="btn btn-block btn-outline-secondary">
+          Bookmark this movie!
+       </button>
+        </form>
+    <% else %>
+          <a href="/delete_bookmark/<%= @the_bookmark.id %>">
+      Un-bookmark
+    </a>
+    
+      <% end %>
+
+<% end %>
 
     <dl>
       <dt>
