@@ -17,7 +17,10 @@
   <body>
          <nav>
       <ul>
-          <li>
+ 
+      <% session.fetch(:user_id) %>
+      <% if session.fetch( :user_id) == nil  %>
+         <li>
             <a href="/user_sign_in">
               Sign in
             </a>
@@ -27,6 +30,19 @@
               Sign up
             </a>
           </li>
+        <%else%>
+            <li>
+            <a href="/user_sign_out">
+              Sign out
+            </a>
+          </li>
+          <li>
+            <a href="/bookmarks">
+              My bookmarks
+            </a>
+          </li>
+                
+            <% end %>
         <li>
           <a href="/">
             Home
@@ -35,8 +51,20 @@
       </ul>
     </nav>
 
+<% if notice.present? %>
+<div style="border: thin green solid; color: green">
+<%= notice %>
+</div>
+<% end %>
+
+<% if alert.present? %>
+<div style="border: thin red solid; color: red">
+<%= alert %>
+</div>
+<% end %>
+
     <%= yield %>
-    
+
     <footer>
       <small>
         This product uses the TMDb API but is not endorsed or certified by TMDb.
